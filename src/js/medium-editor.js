@@ -262,6 +262,13 @@ if (typeof module === 'object') {
                 }
             });
 
+            this.elements[index].addEventListener('keydown', function (e) {
+                var node = getSelectionStart();
+                if (node && node.getAttribute('data-medium-element') && node.children.length === 0 && !(self.options.disableReturn || node.getAttribute('data-disable-return'))) {
+                    document.execCommand('formatBlock', false, 'p');
+                }                
+            });
+
             this.elements[index].addEventListener('keyup', function (e) {
                 var node = getSelectionStart(),
                     tagName;
